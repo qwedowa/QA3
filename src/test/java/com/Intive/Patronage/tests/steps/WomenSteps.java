@@ -31,43 +31,49 @@ public class WomenSteps extends DriverFactory {
         signPage.submitLoginSign.click();
     }
 
-    @When("^I open Women category and choose any product$")
-    public void iOpenWomanCategoryAndChooseAnyProduct() {
+    @When("^I open Women category$")
+    public void iOpenWomanCategory() {
         womenPage.openWomenCategory();
+
+    }
+
+    @And("^I choose any product$")
+    public void iChooseAnyProduct() {
         Assert.assertTrue(womenPage.anyProduct.isDisplayed());
         womenPage.anyProduct.click();
     }
 
-    @And("^I click on  Be the first to write your review! button, I write Title and leave empty Comment and I click on Send button$")
-    public void iClickOnBeTheFirstToWriteYourReviewButtonIWriteTitleAndLeaveEmptyCommentAndIClickOnSendButton() {
+    @And("^I click on Be the first to write your review! button$")
+    public void iClickOnBeTheFirstToWriteYourReviewButton() {
         Assert.assertTrue(womenPage.addReview.isDisplayed());
         womenPage.addReview.click();
+    }
+
+    @And("^I write Title and leave empty Comment$")
+    public void iWriteTitleAndLeaveEmptyComment() {
+
         WebElement reviewTitle = driver.findElement(By.id("comment_title"));
         reviewTitle.sendKeys("Hello");
+    }
+
+    @And("^I click on SendButton$")
+    public void iClickOnSendButton() {
         Assert.assertTrue(womenPage.sendReview.isDisplayed());
         womenPage.sendReview.click();
     }
 
-    @And("^I click on Be the first to write your review! button, I write Comment and leave empty Title and I click on Send button$")
-    public void iClickOnBeTheFirstToWriteYourReviewButtonIWriteCommentAndLeaveEmptyTitleAndIClickOnSendButton() {
-        Assert.assertTrue(womenPage.addReview.isDisplayed());
-        womenPage.addReview.click();
+    @And("^I write Comment and leave empty Title$")
+    public void iWriteCommentAndLeaveEmptyTitle() {
         WebElement reviewComment = driver.findElement(By.id("content"));
         reviewComment.sendKeys("Good product");
-        Assert.assertTrue(womenPage.sendReview.isDisplayed());
-        womenPage.sendReview.click();
     }
 
-    @And("^I click on Be the first to write your review! button, I write Comment and Title and I click on Send button$")
-    public void iClickOnBeTheFirstToWriteYourReviewButtonIWriteCommentAndTitleAndIClickOnSendButton() {
-        Assert.assertTrue(womenPage.addReview.isDisplayed());
-        womenPage.addReview.click();
+    @And("^I write Comment and Title$")
+    public void iWriteCommentAndTitle() {
         WebElement reviewTitle = driver.findElement(By.id("comment_title"));
         reviewTitle.sendKeys("Hello");
         WebElement reviewComment = driver.findElement(By.id("content"));
         reviewComment.sendKeys("Good product");
-        Assert.assertTrue(womenPage.sendReview.isDisplayed());
-        womenPage.sendReview.click();
     }
 
     @Then("^I will add an review$")
@@ -75,16 +81,9 @@ public class WomenSteps extends DriverFactory {
         Assert.assertTrue(womenPage.addedReview.isDisplayed());
     }
 
-    @And("^I click on Be the first to write your review! button, I write Comment and Title and I click on Enter key$")
-    public void iClickOnBeTheFirstToWriteYourReviewButtonIWriteCommentAndTitleAndIClickOnEnterKey() {
-        Assert.assertTrue(womenPage.addReview.isDisplayed());
-        womenPage.addReview.click();
-        WebElement reviewTitle = driver.findElement(By.id("comment_title"));
-        reviewTitle.sendKeys("Hello");
-        WebElement reviewComment = driver.findElement(By.id("content"));
-        reviewComment.sendKeys("Good product");
+    @And("^I click on Enter key$")
+    public void iClickOnEnterKey() {
         driver.findElement(By.id("submitNewMessage")).sendKeys(Keys.ENTER);
-
     }
 
     @Then("^Nothing happen$")
@@ -92,15 +91,22 @@ public class WomenSteps extends DriverFactory {
         
     }
 
-    @And("^I choose two different products, click on Add to Cart button and I click on Cart button$")
-    public void iClickOnAddToCartButtonAndIClickOnCartButton() {
+    @And("^I choose two different products$")
+    public void iChooseTwoDifferentProducts() {
         Assert.assertTrue(womenPage.anyProduct.isDisplayed());
         womenPage.anyProduct.click();
         Assert.assertTrue(womenPage.addToCart.isDisplayed());
         womenPage.addToCart.click();
-        womenPage.openWomenCategory();
+    }
+
+    @And("^I click on Add to Cart button$")
+    public void iClickOnAddToCartButton() {
         Assert.assertTrue(womenPage.addToCartButton.isDisplayed());
         womenPage.addToCartButton.click();
+    }
+
+    @And("^I click on Cart button$")
+    public void iClickOnCartButton() {
         Assert.assertTrue(womenPage.shoppingCart.isDisplayed());
         womenPage.shoppingCart.click();
     }
@@ -108,11 +114,6 @@ public class WomenSteps extends DriverFactory {
     @Then("^I will see all products in Cart$")
     public void iWillSeeAllProductsInCart() {
         // Assert.assertEquals(womenPage.cartSummary.equals("2 Products"));
-    }
-
-    @When("^I open Women category$")
-    public void iOpenWomanCategory() {
-        womenPage.openWomenCategory();
     }
 
     @And("^I choose any filter in Catalog, except Availability$")
@@ -138,11 +139,15 @@ public class WomenSteps extends DriverFactory {
         // Assert.assertEquals(womenPage.productCount.equals("Showing 1 - 3 of 3 items"));
     }
 
-
-    @And("^I choose one product, click Add to Compare button and I click Compare button$")
-    public void iChooseOneProductClickAddToCompareButtonAndIClickCompareButton() {
+    @And("^I click Add to Compare button$")
+    public void iClickAddToCompareButton() {
         Assert.assertTrue(womenPage.addToCompare.isDisplayed());
         womenPage.addToCompare.click();
+
+    }
+
+    @And("^I click Compare button$")
+    public void iClickCompareButton() {
         Assert.assertTrue(womenPage.compareButton.isDisplayed());
         womenPage.compareButton.click();
     }
@@ -152,8 +157,8 @@ public class WomenSteps extends DriverFactory {
         Assert.assertTrue(womenPage.comparedOneProduct.isDisplayed());
     }
 
-    @And("^I choose any three products, click Add to Compare button and I click Compare button$")
-    public void iChooseAnyThreeProductsClickAddToCompareButtonAndIClickCompareButton() {
+    @And("^I choose any three products$")
+    public void iChooseAnyThreeProducts() {
 
     }
 
@@ -162,10 +167,14 @@ public class WomenSteps extends DriverFactory {
 
     }
 
-    @And("^I click on More button of any product and I click View larger button$")
-    public void iClickOnMoreButtonOfAnyProductAndIClickViewLargerButton() {
+    @And("^I click on More button of any product$")
+    public void iClickOnMoreButtonOfAnyProduct() {
         Assert.assertTrue(womenPage.anyProduct.isDisplayed());
         womenPage.anyProduct.click();
+    }
+
+    @And("^I click View larger button$")
+    public void iClickViewLargerButton() {
         Assert.assertTrue(womenPage.viewLarger.isDisplayed());
         womenPage.viewLarger.click();
     }
@@ -175,10 +184,8 @@ public class WomenSteps extends DriverFactory {
         Assert.assertTrue(womenPage.largerPhoto.isDisplayed());
     }
 
-    @And("^I click on More button of any product and I click <; > keys$")
-    public void iClickOnMoreButtonOfAnyProductAndIClickKeys() {
-        Assert.assertTrue(womenPage.anyProduct.isDisplayed());
-        womenPage.anyProduct.click();
+    @And("^I click <; > keys$")
+    public void iClickKeys() {
         driver.findElement(By.id("view_scroll_left")).sendKeys(Keys.ARROW_LEFT);
         driver.findElement(By.id("view_scroll_right")).sendKeys(Keys.ARROW_RIGHT);
     }
@@ -186,17 +193,13 @@ public class WomenSteps extends DriverFactory {
     @Then("^I can't switch between photos$")
     public void iCanTSwitchBetweenPhotos() {
 
-
     }
 
-    @And("^I click on More button of any product and I click <; > buttons$")
-    public void iClickOnMoreButtonOfAnyProductAndIClickButtons() {
-        Assert.assertTrue(womenPage.anyProduct.isDisplayed());
-        womenPage.anyProduct.click();
+    @And("^I click <; > buttons$")
+    public void iClickButtons() {
         Assert.assertTrue(womenPage.rightArrow.isDisplayed());
         womenPage.rightArrow.click();
         Assert.assertTrue(womenPage.leftArrow.isDisplayed());
         womenPage.leftArrow.click();
     }
-
 }

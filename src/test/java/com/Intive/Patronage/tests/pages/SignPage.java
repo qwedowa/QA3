@@ -18,7 +18,7 @@ public class SignPage {
     @FindBy(how = How.ID, using = "SubmitCreate")
     public WebElement submitButtonSign;
 
-    @FindBy(how = How.ID, using = "create_account_error")
+    @FindBy(how = How.CLASS_NAME, using = "alert-danger")
     public WebElement createAccountError;
 
     @FindBy(how = How.ID, using = "email_create")
@@ -42,7 +42,7 @@ public class SignPage {
     @FindBy (how = How.CLASS_NAME, using =  "account")
     public WebElement loggedIn;
 
-    @FindBy (how = How.CLASS_NAME, using = "alert alert-danger")
+    @FindBy (how = How.CLASS_NAME, using = "alert-danger")
     public WebElement wrongPswd;
 
     @FindBy (how = How.CLASS_NAME, using = "btn btn-default button-search")

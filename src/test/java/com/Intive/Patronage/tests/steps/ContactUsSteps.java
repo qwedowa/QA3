@@ -41,11 +41,9 @@ public class ContactUsSteps extends DriverFactory {
         Assert.assertTrue(contactUsPage.alertPopUp.isDisplayed());
 
     }
+    @And("^I choose anything in Subject Heading, Email address, Order reference and Product; Message box and attachment is empty$")
+    public void iChooseAnythingInSubjectHeadingEmailAddressOrderReferenceAndProductMessageBoxAndAttachmentIsEmpty() {
 
-    @When("^I click on ContactUS link and I choose anything in Subject Heading, Email address, Order reference and Product; Message box and attachment is empty$")
-    public void iClickOnContactUSLinkAndIChooseAnythingInSubjectHeadingEmailAddressOrderReferenceAndProductMessageBoxAndAttachmentIsEmpty() {
-        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
-        mainPage.contactUsLink.click();
 
         Select idContact = new Select(driver.findElement(By.id("id_contact")));
         idContact.selectByIndex(1);
@@ -61,19 +59,15 @@ public class ContactUsSteps extends DriverFactory {
 
     }
 
-    @When("^I click on ContactUS link and I write anything in Message box$")
-    public void iClickOnContactUSLinkAndIWriteAnythingInMessageBox() {
-        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
-        mainPage.contactUsLink.click();
+    @And("^I write anything in Message box$")
+    public void iWriteAnythingInMessageBox() {
 
         WebElement message = driver.findElement(By.id("message"));
         message.sendKeys("Hello");
     }
 
-    @When("^I click on ContactUS link and I fill forms, without attachment$")
-    public void iClickOnContactUSLinkAndIFillFormsWithoutAttachment() {
-        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
-        mainPage.contactUsLink.click();
+    @And("^I fill forms, without attachment$")
+    public void iFillFormsWithoutAttachment() {
 
         Select idContact = new Select(driver.findElement(By.id("id_contact")));
         idContact.getFirstSelectedOption();
