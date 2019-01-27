@@ -16,7 +16,7 @@ Feature: As a user I want to have possibility to sign up, sign in, use searchbar
     Given I open Automationpractice Website
     When I click on SignIn button
     And I write "123abc@gmail.com" and click on CreateAnAccount button
-    Then I will create an account
+    Then I will able to create an account
 
   Scenario: Check error pop-up if user sign in with correct data
     Given I open Automationpractice Website

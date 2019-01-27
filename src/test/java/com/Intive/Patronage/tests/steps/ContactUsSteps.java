@@ -7,6 +7,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebElement;
 import org.junit.Assert;
 
 public class ContactUsSteps extends DriverFactory {
@@ -22,14 +25,13 @@ public class ContactUsSteps extends DriverFactory {
 
     @When("^I click on ContactUS link$")
     public void iClickOnContactUSLink() {
-
-        mainPage.contactUsLink.isDisplayed();
+        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
         mainPage.contactUsLink.click();
     }
 
     @And("^I click on Send button$")
     public void iClickOnSendButton() {
-        contactUsPage.submitButtonContactUs.isDisplayed();
+        Assert.assertTrue(contactUsPage.submitButtonContactUs.isDisplayed());
         contactUsPage.submitButtonContactUs.click();
 
     }
@@ -37,5 +39,62 @@ public class ContactUsSteps extends DriverFactory {
     @Then("^I see error popup$")
     public void iWillSeeErrorPopup() {
         Assert.assertTrue(contactUsPage.alertPopUp.isDisplayed());
+
     }
+
+    @When("^I click on ContactUS link and I choose anything in Subject Heading, Email address, Order reference and Product; Message box and attachment is empty$")
+    public void iClickOnContactUSLinkAndIChooseAnythingInSubjectHeadingEmailAddressOrderReferenceAndProductMessageBoxAndAttachmentIsEmpty() {
+        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
+        mainPage.contactUsLink.click();
+
+        Select idContact = new Select(driver.findElement(By.id("id_contact")));
+        idContact.selectByIndex(1);
+
+        Select email = new Select(driver.findElement(By.id("email")));
+        email.selectByVisibleText("testxyz1994@gmail.com");
+
+        Select order = new Select(driver.findElement(By.id("id_order")));
+        order.selectByIndex(1);
+
+        Select idProduct = new Select(driver.findElement(By.id("id_product")));
+        idProduct.selectByIndex(1);
+
+    }
+
+    @When("^I click on ContactUS link and I write anything in Message box$")
+    public void iClickOnContactUSLinkAndIWriteAnythingInMessageBox() {
+        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
+        mainPage.contactUsLink.click();
+
+        WebElement message = driver.findElement(By.id("message"));
+        message.sendKeys("Hello");
+    }
+
+    @When("^I click on ContactUS link and I fill forms, without attachment$")
+    public void iClickOnContactUSLinkAndIFillFormsWithoutAttachment() {
+        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
+        mainPage.contactUsLink.click();
+
+        Select idContact = new Select(driver.findElement(By.id("id_contact")));
+        idContact.getFirstSelectedOption();
+
+        Select email = new Select(driver.findElement(By.id("email")));
+        email.selectByVisibleText("testxyz1994@gmail.com");
+
+        Select order = new Select(driver.findElement(By.id("id_order")));
+        order.getFirstSelectedOption();
+
+        Select idProduct = new Select(driver.findElement(By.id("id_product")));
+        idProduct.getFirstSelectedOption();
+
+        WebElement message = driver.findElement(By.id("message"));
+        message.sendKeys("Hello");
+    }
+
+    @Then("^I will send message$")
+    public void iWillSendMessage() {
+        Assert.assertTrue(contactUsPage.alertSuccess.isDisplayed());
+
+    }
+
 }

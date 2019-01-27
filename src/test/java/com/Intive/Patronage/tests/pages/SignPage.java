@@ -15,11 +15,38 @@ public class SignPage {
         driver.get(AUTOMATIONPRACT_URL);
     }
 
-    @FindBy(how = How.CLASS_NAME, using = "submit")
+    @FindBy(how = How.ID, using = "SubmitCreate")
     public WebElement submitButtonSign;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='create_account_error']")
+    @FindBy(how = How.ID, using = "create_account_error")
     public WebElement createAccountError;
+
+    @FindBy(how = How.ID, using = "email_create")
+    public WebElement createdEmail;
+
+    @FindBy(how = How.CLASS_NAME, using = "submit clearfix")
+    public WebElement register;
+
+    @FindBy(how = How.ID, using = "email")
+    public WebElement emailAddress;
+
+    @FindBy(how = How.ID, using = "passwd")
+    public WebElement password;
+
+    @FindBy(how = How.ID, using = "SubmitLogin")
+    public WebElement submitLoginSign;
+
+    @FindBy (how = How.ID, using = "search_query_top")
+    public  WebElement searchbar;
+
+    @FindBy (how = How.CLASS_NAME, using =  "account")
+    public WebElement loggedIn;
+
+    @FindBy (how = How.CLASS_NAME, using = "alert alert-danger")
+    public WebElement wrongPswd;
+
+    @FindBy (how = How.CLASS_NAME, using = "btn btn-default button-search")
+    public WebElement searchButton;
 
     public SignPage(final WebDriver driver) {
         this.driver = driver;
