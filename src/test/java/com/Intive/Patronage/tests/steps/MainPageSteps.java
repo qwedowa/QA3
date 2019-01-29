@@ -20,7 +20,7 @@ public class MainPageSteps extends DriverFactory {
     SignPage signPage = new SignPage(driver);
 
     @Given("^I open Automationpractice Website$")
-    public void iOpenAutomationpracticeWebsite() {mainPage.openAutomationPracticePage();
+    public void iOpenAutomationpracticeWebsite() {;
     }
 
     @When("^I click on SignIn button$")
@@ -38,7 +38,7 @@ public class MainPageSteps extends DriverFactory {
     @Then("^I will see error popup$")
     public void iWillSeeErrorPopup() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("create_account_error")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("alert-danger")));
     }
 
 

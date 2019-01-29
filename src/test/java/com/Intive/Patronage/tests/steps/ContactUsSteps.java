@@ -25,8 +25,8 @@ public class ContactUsSteps extends DriverFactory {
 
     @When("^I click on ContactUS link$")
     public void iClickOnContactUSLink() {
-        Assert.assertTrue(mainPage.contactUsLink.isDisplayed());
-        mainPage.contactUsLink.click();
+        Assert.assertTrue(contactUsPage.contactUsLink.isDisplayed());
+        contactUsPage.contactUsButton().click();
     }
 
     @And("^I click on Send button$")
@@ -38,7 +38,7 @@ public class ContactUsSteps extends DriverFactory {
 
     @Then("^I see error popup$")
     public void iWillSeeErrorPopup() {
-        Assert.assertTrue(contactUsPage.alertPopUp.isDisplayed());
+        Assert.assertTrue(contactUsPage.error().isDisplayed());
 
     }
     @And("^I choose anything in Subject Heading, Email address, Order reference and Product; Message box and attachment is empty$")

@@ -34,9 +34,18 @@ public class ContactUsPage {
     @FindBy(how = How.CLASS_NAME, using = "alert-success")
     public WebElement alertSuccess;
 
+    @FindBy(how = How.ID, using = "contact-link")
+    public WebElement contactUsLink;
+
     public ContactUsPage(final WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public WebElement contactUsButton() {
+        return contactUsLink;
+    }
 
+    public WebElement error() {
+        return alertPopUp;
+    }
 }

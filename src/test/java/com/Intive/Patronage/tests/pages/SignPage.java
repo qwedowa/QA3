@@ -52,4 +52,7 @@ public class SignPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+    public WebElement createError() {
+        return createAccountError;
+    }
 }
